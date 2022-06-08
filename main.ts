@@ -35,7 +35,12 @@ const searchNews = async(ward : string)=>{
     
     console.log(url)
 
-    let res = await fetch(url);
+    let res = await fetch(url,{
+        headers: {
+            "X-Api-Key": "f3980ced95b0479399946191128923a5",
+            "Authorization": "f3980ced95b0479399946191128923a5",
+        },
+    });
 
     let data = await res.json();
 
@@ -49,7 +54,12 @@ const getNews = async ()=> {
     spinnerRender()
     let url : string = `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=f3980ced95b0479399946191128923a5&pageSize=20&page=${page}`;
 
-    let res = await fetch(url);
+    let res = await fetch(url,{
+        headers: {
+            "X-Api-Key": "f3980ced95b0479399946191128923a5",
+            "Authorization": "f3980ced95b0479399946191128923a5",
+        },
+    });
 
     let data = await res.json();
 

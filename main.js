@@ -21,7 +21,12 @@ const searchNews = async (ward) => {
     spinnerRender();
     let url = `https://newsapi.org/v2/top-headlines?q=${ward}&apiKey=f3980ced95b0479399946191128923a5&pageSize=20&page=${page}`;
     console.log(url);
-    let res = await fetch(url);
+    let res = await fetch(url, {
+        headers: {
+            "X-Api-Key": "f3980ced95b0479399946191128923a5",
+            "Authorization": "f3980ced95b0479399946191128923a5",
+        },
+    });
     let data = await res.json();
     totalPage = Math.ceil(data.totalResults / 20);
     newsRender(data.articles);
@@ -29,7 +34,12 @@ const searchNews = async (ward) => {
 const getNews = async () => {
     spinnerRender();
     let url = `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=f3980ced95b0479399946191128923a5&pageSize=20&page=${page}`;
-    let res = await fetch(url);
+    let res = await fetch(url, {
+        headers: {
+            "X-Api-Key": "f3980ced95b0479399946191128923a5",
+            "Authorization": "f3980ced95b0479399946191128923a5",
+        },
+    });
     let data = await res.json();
     console.log(data);
     console.log(category);
