@@ -69,6 +69,16 @@ const newsRender = (data : object[])=>{
 
     console.log(data);
 
+    if(data.length == 0){
+        let renderHTML = ``
+
+        let newsArea = document.querySelector('.news-seaction');
+
+        if(newsArea instanceof HTMLElement){
+            newsArea.innerHTML = renderHTML
+        }
+    }
+
     let renderHTML = ``
     data.forEach((a : {[key : string]:string }) =>{
         renderHTML += `<article class="news">

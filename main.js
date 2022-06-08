@@ -1,12 +1,3 @@
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 const navItems = document.querySelectorAll('.gnb-item');
 const searchInput = document.querySelector('.search-input');
 let page = 1;
@@ -14,7 +5,7 @@ let category = 'general';
 let totalPage = 0;
 let searchProp = false;
 let keyWard = '';
-searchInput === null || searchInput === void 0 ? void 0 : searchInput.addEventListener('keyup', function () {
+searchInput?.addEventListener('keyup', function () {
     const e = window.event;
     if (e.key === 'Enter') {
         // console.log(this.value )
@@ -26,28 +17,35 @@ searchInput === null || searchInput === void 0 ? void 0 : searchInput.addEventLi
         this.value = '';
     }
 });
-const searchNews = (ward) => __awaiter(this, void 0, void 0, function* () {
+const searchNews = async (ward) => {
     spinnerRender();
     let url = `https://newsapi.org/v2/top-headlines?q=${ward}&apiKey=f3980ced95b0479399946191128923a5&pageSize=20&page=${page}`;
     console.log(url);
-    let res = yield fetch(url);
-    let data = yield res.json();
+    let res = await fetch(url);
+    let data = await res.json();
     totalPage = Math.ceil(data.totalResults / 20);
     newsRender(data.articles);
-});
-const getNews = () => __awaiter(this, void 0, void 0, function* () {
+};
+const getNews = async () => {
     spinnerRender();
     let url = `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=f3980ced95b0479399946191128923a5&pageSize=20&page=${page}`;
-    let res = yield fetch(url);
-    let data = yield res.json();
+    let res = await fetch(url);
+    let data = await res.json();
     console.log(data);
     console.log(category);
     totalPage = Math.ceil(data.totalResults / 20);
     console.log(totalPage);
     newsRender(data.articles);
-});
+};
 const newsRender = (data) => {
     console.log(data);
+    if (data.length == 0) {
+        let renderHTML = ``;
+        let newsArea = document.querySelector('.news-seaction');
+        if (newsArea instanceof HTMLElement) {
+            newsArea.innerHTML = renderHTML;
+        }
+    }
     let renderHTML = ``;
     data.forEach((a) => {
         renderHTML += `<article class="news">
@@ -77,7 +75,7 @@ const newsRender = (data) => {
     }
 };
 navItems.forEach(function (a) {
-    a === null || a === void 0 ? void 0 : a.addEventListener('click', function (e) {
+    a?.addEventListener('click', function (e) {
         if (e.target instanceof HTMLElement) {
             let clickCatecory = e.target.dataset.catecory;
             page = 1;
