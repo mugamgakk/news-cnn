@@ -28,7 +28,7 @@ searchInput === null || searchInput === void 0 ? void 0 : searchInput.addEventLi
 });
 const searchNews = (ward) => __awaiter(this, void 0, void 0, function* () {
     spinnerRender();
-    let url = `https://newsapi.org/v2/top-headlines?q=${ward}&apiKey=a2c90a571ab144978f8b1832a1c15883&pageSize=20&page=${page}`;
+    let url = `https://newsapi.org/v2/top-headlines?q=${ward}&apiKey=f3980ced95b0479399946191128923a5&pageSize=20&page=${page}`;
     console.log(url);
     let res = yield fetch(url);
     let data = yield res.json();
@@ -37,7 +37,7 @@ const searchNews = (ward) => __awaiter(this, void 0, void 0, function* () {
 });
 const getNews = () => __awaiter(this, void 0, void 0, function* () {
     spinnerRender();
-    let url = `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=a2c90a571ab144978f8b1832a1c15883&pageSize=20&page=${page}`;
+    let url = `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=f3980ced95b0479399946191128923a5&pageSize=20&page=${page}`;
     let res = yield fetch(url);
     let data = yield res.json();
     console.log(data);

@@ -30,7 +30,7 @@ const searchNews = async(ward : string)=>{
 
     
     spinnerRender()
-    let url : string = `https://newsapi.org/v2/top-headlines?q=${ward}&apiKey=a2c90a571ab144978f8b1832a1c15883&pageSize=20&page=${page}`;
+    let url : string = `https://newsapi.org/v2/top-headlines?q=${ward}&apiKey=f3980ced95b0479399946191128923a5&pageSize=20&page=${page}`;
 
     
     console.log(url)
@@ -47,7 +47,7 @@ const searchNews = async(ward : string)=>{
 
 const getNews = async ()=> {
     spinnerRender()
-    let url : string = `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=a2c90a571ab144978f8b1832a1c15883&pageSize=20&page=${page}`;
+    let url : string = `https://newsapi.org/v2/top-headlines?country=kr&category=${category}&apiKey=f3980ced95b0479399946191128923a5&pageSize=20&page=${page}`;
 
     let res = await fetch(url);
 
@@ -110,7 +110,7 @@ navItems.forEach(function(a){
             page = 1
             searchProp = false;
             category = clickCatecory
-            
+
             getNews()
         }
     })
